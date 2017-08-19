@@ -1,25 +1,12 @@
-from orator import DatabaseManager
-from os import environ
 from flask import Flask, render_template
+
 app = Flask(__name__)
-
-config = {
-    'mysql': {
-        'driver': 'mysql',
-        'host': 'localhost',
-        'database': 'julinho',
-        'user': environ['DB_USER'],
-        'password': environ['DB_PASSWORD'],
-        'prefix': ''
-    }
-}
-
-db = DatabaseManager(config)
-
-@app.route("/")
-def home():
-    users = db.table('user').get()
-    return str(users[0]['email'])
+# from orator import DatabaseManager
+# from os import environ
+# import bcrypt
+# password = b"super secret password"
+# hashed = bcrypt.hashpw(password, bcrypt.gensalt())
+# db = DatabaseManager(config)
 
 @app.route('/hello/<name>')
 def hello(name=None):

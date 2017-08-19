@@ -2,3 +2,4 @@ Flask==0.12.2
 orator==0.9.7
 PyMySQL==0.7.11
 python-dotenv==0.6.5
+bcrypt==3.1.3

@@ -23,7 +23,7 @@ Você pode usar o arquivo [`.env.example`](.env.example) como base para criar o 
 Depois de tudo instalado rode o seguinte comando na linha de comando para iniciar o servidor na porta `5000`.
 
 ```sh
-$ python run.py
+$ python run.py server
 ```
 
 Agora a aplicação está disponível em [`localhost:5000`](http://localhost:5000).
