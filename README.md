@@ -15,7 +15,7 @@ Instale as dependências necessárias para no projeto com o seguinte comando:
 $ pip install -r requirements.txt
 ```
 
-Crie na raiz do projeto um arquivo `.env` com as suas credencias de acesso ao banco de dados e definindo qual ambiente o projeto rodará.
+Crie na raiz do projeto um arquivo `.env` com as suas credenciais de acesso ao banco de dados e definindo qual ambiente o projeto rodará.
 Você pode usar o arquivo [`.env.example`](.env.example) como base para criar o seu.
 
 ## Utilização
