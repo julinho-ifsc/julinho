@@ -1,13 +1,15 @@
-from flask import Flask, render_template
+from os import urandom
+from flask import Flask, render_template, session
+from controllers.login import login_controller
+from utils.login_required import login_required
 
 app = Flask(__name__)
-# from orator import DatabaseManager
-# from os import environ
-# import bcrypt
-# password = b"super secret password"
-# hashed = bcrypt.hashpw(password, bcrypt.gensalt())
-# db = DatabaseManager(config)
+app.register_blueprint(login_controller)
+app.secret_key = urandom(24)
 
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('hello.html', name=name)
+
+@app.route('/')
+@login_required
+def home():
+    name = session.get('username')
+    return render_template('index.html', name=name)

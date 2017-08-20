@@ -1,7 +1,8 @@
-from dotenv import load_dotenv, find_dotenv
-load_dotenv(find_dotenv())
-
 from os import environ
+from dotenv import load_dotenv, find_dotenv
+from orator import DatabaseManager
+
+load_dotenv(find_dotenv())
 
 DATABASES = {
     'mysql': {
@@ -13,3 +14,5 @@ DATABASES = {
         'prefix': ''
     }
 }
+
+db = DatabaseManager(DATABASES)
