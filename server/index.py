@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.register_blueprint(login_controller)
 app.secret_key = urandom(24)
 
-
 @app.route('/')
 @login_required
 def home():
