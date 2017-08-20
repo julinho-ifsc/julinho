@@ -24,8 +24,11 @@ def help():
         '    make:migration - Create a new migration',
         '        python run.py make:migration <migration_name>',
         '',
-        '    seed - Run the seeds',
-        '        python run.py seed',
+        '    seed:all - Run all the seeds',
+        '        python run.py seed:all',
+        '',
+        '    seed - Run a seeds',
+        '        python run.py seed <seed_name>',
         '',
         '    make:seed - Create a new seed',
         '        python run.py make:seed <seed_name>'
@@ -57,10 +60,20 @@ def make_migration():
         )
     )
 
-def seed():
+def seed_all():
     seeds = remove_files_extension(remove_special_files(list_files('server/seeds')))
     for seed in seeds:
         call('orator db:seed -c server/config/database.py -p server/seeds --seeder {seed}'.format(seed=seed))
+
+def seed():
+    if len(argv) >= 3:
+        seed_name = argv[2]
+    else:
+        print('A name must be provided.')
+        help()
+        exit(1)
+
+    call('orator db:seed -c server/config/database.py -p server/seeds --seeder {seed}'.format(seed=seed_name))
 
 def make_seed():
     if len(argv) >= 3:
@@ -81,6 +94,7 @@ def main():
         'server': server,
         'migrate': migrate,
         'make:migration': make_migration,
+        'seed:all': seed_all,
         'seed': seed,
         'make:seed': make_seed
     }
