@@ -8,7 +8,7 @@ DATABASES = {
     'mysql': {
         'driver': 'mysql',
         'host': 'localhost',
-        'database': 'julinho',
+        'database': environ['DB_USER'],
         'user': environ['DB_USER'],
         'password': environ['DB_PASSWORD'],
         'prefix': ''
