@@ -5,8 +5,8 @@ from subprocess import call
 from dotenv import load_dotenv, find_dotenv
 
 DATABASE_CONFIG_PATH = 'server/config/database.py'
-MIGRATIONS_PATH = 'server/migrations'
-SEEDS_PATH = 'server/seeds'
+MIGRATIONS_PATH = 'server/migrations/'
+SEEDS_PATH = 'server/seeds/'
 
 def list_files(files_path):
     return [f for f in listdir(files_path) if isfile(join(files_path, f))]
