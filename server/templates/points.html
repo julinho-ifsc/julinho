@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastros de pontos</title>
+</head>
+<body>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>RFID</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for point in points %}
+                <tr data-id="{{ point.id }}">
+                    <td>{{ point.name }}</td>
+                    <td>{{ point.rfid }}</td>
+                    <td>
+                        <button class="js-point-edit">Editar</button>
+                        <button class="js-point-remove">Remover</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <form id="points-form">
+            <label for="name">Nome</label>
+            <input type="text" name="name" id="name">
+
+            <label for="rfid">RFID</label>
+            <input type="text" name="rfid" id="rfid">
+
+            <button type="reset">Cancelar</button>
+            <button type="submit">Gravar</button>
+        </form>
+    </section>
+
+    <a href="/logout">Logout</a>
+    <script src="/static/bundle.js"></script>
+</body>
+</html>

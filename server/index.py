@@ -1,9 +1,11 @@
 from os import urandom
 from flask import Flask, render_template, session
 from controllers.login import login_controller
+from controllers.points import points_controller
 from utils.login_required import login_required
 
 app = Flask(__name__)
+app.register_blueprint(points_controller)
 app.register_blueprint(login_controller)
 app.secret_key = urandom(24)
 

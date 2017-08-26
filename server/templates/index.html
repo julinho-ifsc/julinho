@@ -8,10 +8,16 @@
 </head>
 <body>
     {% if name %}
-        <h1>Hello {{ name }}!</h1>
-    {% else %}
-        <h1>Hello, World!</h1>
+        <h1>Bem vindo, {{ name }}!</h1>
     {% endif %}
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/points">Cadastrar pontos</a>
+            </li>
+        </ul>
+    </nav>
 
     <a href="/logout">Logout</a>
     <script src="/static/bundle.js"></script>

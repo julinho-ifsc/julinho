@@ -1,6 +1,9 @@
 # bundle
 server/static/bundle.js
 
+# orator seeder
+server/seeds/database_seeder.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
