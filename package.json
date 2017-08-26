@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build:watch": "webpack -w --hide-modules --colors --progress",
-    "serve": "browser-sync start --proxy 'localhost:5000'  --files '../assets' --port 3000",
+    "serve": "browser-sync start --proxy \"localhost:5000\" --files \"server\" --port 3000",
     "start": "run-p -r serve build:watch",
     "build": "webpack -p"
   },
