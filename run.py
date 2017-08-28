@@ -1,7 +1,7 @@
 from sys import argv, exit
 from os import environ, listdir
 from os.path import isfile, join
-from subprocess import call
+from subprocess import run
 from dotenv import load_dotenv, find_dotenv
 
 DATABASE_CONFIG_PATH = 'server/config/database.py'
@@ -55,14 +55,14 @@ def server():
     if environ['ENV'] == 'dev':
         environ['FLASK_DEBUG'] = '1'
 
-    call('flask run')
+    run('flask run'.split(' '))
 
 def migrate():
-    call(
+    run(
         'orator migrate -c {config} -p {path}'.format(
             config=DATABASE_CONFIG_PATH,
             path=MIGRATIONS_PATH
-        )
+        ).split(' ')
     )
 
 def make_migration():
@@ -72,22 +72,22 @@ def make_migration():
         print('A name must be provided.')
         commands_help()
         exit(1)
-    call(
+    run(
         'orator make:migration {migration_name} -p {path}'.format(
             migration_name=migration_name,
             path=MIGRATIONS_PATH
-        )
+        ).split(' ')
     )
 
 def seed_all():
     seeds = remove_files_extension(remove_special_files(list_files(SEEDS_PATH)))
     for name in seeds:
-        call(
+        run(
             'orator db:seed -c {config} -p {path} --seeder {name}'.format(
                 config=DATABASE_CONFIG_PATH,
                 path=SEEDS_PATH,
                 name=name
-            )
+            ).split(' ')
         )
 
 def seed():
@@ -98,12 +98,12 @@ def seed():
         commands_help()
         exit(1)
 
-    call(
+    run(
         'orator db:seed -c {config} -p {path} --seeder {seed}'.format(
             config=DATABASE_CONFIG_PATH,
             seed=seed_name,
             path=SEEDS_PATH
-        )
+        ).split(' ')
     )
 
 def make_seed():
@@ -113,11 +113,11 @@ def make_seed():
         print('A name must be provided.')
         commands_help()
         exit(1)
-    call(
+    run(
         'orator make:seed {seed_name} -p {path}'.format(
             seed_name=seed_name,
             path=SEEDS_PATH
-        )
+        ).split(' ')
     )
 
 
