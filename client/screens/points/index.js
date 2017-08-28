@@ -27,9 +27,9 @@ export default () => {
   removeButtons.forEach(removeButtonComponent(emitter))
 
   emitter.on(REMOVE_POINT, removePoint())
-  emitter.on(FILL_FORM_POINT, fillFormPoint(emitter, formElement))
+  emitter.on(FILL_FORM_POINT, fillFormPoint(formElement))
   emitter.on(EDIT_POINT, editPoint(emitter))
-  emitter.on(CREATE_POINT, createPoint(tableElement))
+  emitter.on(CREATE_POINT, createPoint(emitter, tableElement))
 
   formElement.addEventListener('submit', handleSubmit(emitter, tableElement))
   formElement.addEventListener('reset', handleReset)
