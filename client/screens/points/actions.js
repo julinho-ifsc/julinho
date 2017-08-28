@@ -20,6 +20,7 @@ export const removePoint = () => async ({id, pointElement}) => {
   try {
     await services.removePoint(id)
     pointElement.parentNode.removeChild(pointElement)
+    alert('Ponto removido com sucesso!')
   } catch (err) {
     alert('Não foi possível remover o ponto')
   }
@@ -40,6 +41,7 @@ export const editPoint = emitter => async ({id, pointElement, data}) => {
     const rowElement = pointElement.cloneNode(true)
     rowComponent(rowElement)(emitter)(point)
     pointElement.parentNode.replaceChild(rowElement, pointElement)
+    alert('Ponto alterado com sucesso')
   } catch (err) {
     alert('Não foi possível alterar o ponto')
   }
@@ -53,6 +55,7 @@ export const createPoint = (emitter, tableElement) => async ({data}) => {
     const point = await services.createPoint(data)
     rowComponent(rowElement)(emitter)(point)
     tbody.appendChild(rowElement)
+    alert('Ponto criado com sucesso')
   } catch (err) {
     alert('Não foi possível criar o ponto')
   }
