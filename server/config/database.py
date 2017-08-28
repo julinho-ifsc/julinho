@@ -7,7 +7,7 @@ load_dotenv(find_dotenv())
 DATABASES = {
     'mysql': {
         'driver': 'mysql',
-        'host': 'localhost',
+        'host': environ['DB_HOST'],
         'database': environ['DB_NAME'],
         'user': environ['DB_USER'],
         'password': environ['DB_PASSWORD'],

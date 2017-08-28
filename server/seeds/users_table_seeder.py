@@ -6,7 +6,7 @@ class UsersTableSeeder(Seeder):
         """
         Run the database seeds.
         """
-        password = b"julinhoadmin123"
+        password = b'julinhoadmin123'
         hashed_password = bcrypt.hashpw(password, bcrypt.gensalt())
 
         self.db.table('users').insert({
