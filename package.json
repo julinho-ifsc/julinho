@@ -42,6 +42,7 @@
   "dependencies": {
     "mitt": "^1.1.2",
     "regenerator-runtime": "^0.11.0",
+    "vanilla-dialogs": "0.0.2",
     "whatwg-fetch": "^2.0.3"
   }
 }

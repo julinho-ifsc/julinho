@@ -1,4 +1,5 @@
 import {EDIT_POINT, CREATE_POINT} from './actions'
+import {alert} from 'vanilla-dialogs'
 
 export const handleSubmit = (emitter, tableElement) => event => {
   event.preventDefault()
@@ -8,7 +9,15 @@ export const handleSubmit = (emitter, tableElement) => event => {
     rfid: event.target.rfid.value
   }
 
-  event.target.reset()
+  if (!data.name) {
+    alert('Nome inválido')
+    return
+  }
+
+  if (!data.rfid) {
+    alert('Nome inválido')
+    return
+  }
 
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id')
@@ -17,12 +26,13 @@ export const handleSubmit = (emitter, tableElement) => event => {
       data,
       pointElement: tableElement.querySelector(`[data-id="${id}"]`)
     })
-    return
+  } else {
+    emitter.emit(CREATE_POINT, {
+      data
+    })
   }
 
-  emitter.emit(CREATE_POINT, {
-    data
-  })
+  event.target.reset()
 }
 
 export const handleReset = event => {
