@@ -11,13 +11,14 @@ O projeto utiliza o [Flask](http://flask.pocoo.org/) como framework web e o [Ora
 - [Licença](#licença)
 
 ## Instalação
-Este projeto usa [python 3](https://www.python.org/) e [mysql](https://www.mysql.com/).
+Este projeto usa [python 3](https://www.python.org/), [nodejs 8](https://nodejs.org/), [npm](https://www.npmjs.com/) e [mysql](https://www.mysql.com/).
 Tenha certeza de ter eles instalados corretamente antes de prosseguir.
 
 Instale as dependências necessárias para no projeto com o seguinte comando:
 
 ```sh
 $ pip install -r requirements.txt
+$ npm install
 ```
 
 Crie na raiz do projeto um arquivo `.env` com as suas credenciais de acesso ao banco de dados e definindo qual ambiente o projeto rodará.
@@ -29,7 +30,7 @@ Acesse o mysql pela linha de comando:
 $ mysql -u <NOME_DE_USUARIO> -p
 ```
 
-Crie uma banco de dados com o nome `julinho`:
+Crie uma banco de dados com o nome `julinho` ou outro da sua preferência:
 
 ```sql
 CREATE DATABASE julinho;
@@ -49,9 +50,10 @@ $ python run.py seed
 
 ## Utilização
 
-Depois de tudo instalado rode o seguinte comando na linha de comando para iniciar o servidor na porta `5000`.
+Depois de tudo instalado rode o seguinte comando na linha de comando para iniciar o servidor na porta `5000`, e iniciar o [webpack](https://webpack.js.org/) em [modo watch](https://webpack.js.org/configuration/watch/).
 
 ```sh
+$ npm run build:watch
 $ python run.py server
 ```
 
