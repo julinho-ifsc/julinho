@@ -18,9 +18,12 @@ export const editPoint = emitter => async ({id, pointElement, data}) => {
 }
 
 export const createPoint = (emitter, tableElement) => async ({data}) => {
+  const tbody = tableElement.querySelector('tbody')
+  const rowElement = tbody.querySelector('tr').cloneNode(true)
+
   const point = await services.createPoint(data)
-  const row = rowComponent(emitter)(point)
-  tableElement.querySelector('tbody').appendChild(row)
+  rowComponent(rowElement)(emitter)(point)
+  tbody.appendChild(rowElement)
 }
 
 export const fillFormPoint = formElement => async ({id}) => {

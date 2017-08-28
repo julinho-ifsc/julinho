@@ -1,32 +1,24 @@
 import editButtonComponent from './edit-button'
 import removeButtonComponent from './remove-button'
 
-export default emitter => ({id, name, rfid}) => {
-  const tr = document.createElement('tr')
-  tr.setAttribute('data-id', id)
+export default rowElement => emitter => ({id, name, rfid}) => {
+  rowElement.setAttribute('data-id', id)
 
-  const nameElement = document.createElement('td')
+  const nameElement = rowElement.children[0]
   nameElement.textContent = name
 
-  const rfidElement = document.createElement('td')
+  const rfidElement = rowElement.children[1]
   rfidElement.textContent = rfid
 
-  const actionsElement = document.createElement('td')
+  const actionsElement = rowElement.children[2]
 
-  const editElement = document.createElement('button')
+  const editElement = actionsElement.querySelector('.js-point-edit')
   editElement.textContent = 'Editar'
   editButtonComponent(emitter)(editElement)
 
-  const removeElement = document.createElement('button')
+  const removeElement = actionsElement.querySelector('.js-point-remove')
   removeElement.textContent = 'Remover'
   removeButtonComponent(emitter)(removeElement)
 
-  actionsElement.appendChild(editElement)
-  actionsElement.appendChild(removeElement)
-
-  tr.appendChild(nameElement)
-  tr.appendChild(rfidElement)
-  tr.appendChild(actionsElement)
-
-  return tr
+  return rowElement
 }
